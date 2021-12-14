@@ -1,0 +1,51 @@
+<form #fundWithdrwalForm="ngForm" (submit)="FundWithdrawl()">
+    <mat-toolbar color="warn">
+        Fund WithDrwal 
+    </mat-toolbar>
+     
+    <br>
+    <div class="card">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <mat-form-field appearance="outline" style="width: 100%;">
+                        <mat-label>Account No.</mat-label>
+                        <input required matInput type="text" name="AccountNo" [(ngModel)]="Fundwithdrawal.AccountNo"
+                            #AccountNo="ngModel" [ngClass]="{'is-invalid':AccountNo.touched && AccountNo.invalid}">
+                    </mat-form-field>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <mat-form-field appearance="outline" style="width: 100%;">
+                        <mat-label>Fund Withdrwal Date </mat-label>
+                        <input required matInput type="text" name="WithdrwalDate"
+                            [(ngModel)]="Fundwithdrawal.WithdrwalDate" #WithdrwalDate="ngModel"
+                            [ngClass]="{'is-invalid':WithdrwalDate.touched && WithdrwalDate.invalid}">
+                    </mat-form-field>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <mat-form-field appearance="outline" style="width: 100%;">
+                        <mat-label>Amount To Transfer (in Rupees) </mat-label>
+                        <input required matInput type="texy" name="WithdrwalAmount"  pattern="^[0-9]*$"
+                            [(ngModel)]="Fundwithdrawal.WithdrwalAmount" #WithdrwalAmount="ngModel"  
+                            [ngClass]="{'is-invalid':WithdrwalAmount.touched && WithdrwalAmount.invalid}">
+                        <mat-icon matPrefix>lock</mat-icon>
+                    </mat-form-field>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer">
+            <button mat-raised-button color="primary" [disabled]="fundWithdrwalForm.invalid">
+                Submit
+            </button>
+        </div>
+    </div>
+</form>
+<ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="default" type="ball-spin-clockwise">
+    <p style="color: white">Please Wait ... </p>
+</ngx-spinner>

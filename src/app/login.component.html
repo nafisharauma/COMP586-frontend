@@ -1,0 +1,54 @@
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	 
+	<title>Login Page</title>
+</head>
+<body>
+	<!-- Main Content -->
+	<div class="container-fluid">
+		<div class="row main-content bg-success text-center">
+			<div class="col-md-4 text-center company__info">
+				<span class="company__logo"> <img src="assets/images/bank.png" class="img img-thumbnail" height="150px" width="200px"
+                    style="display:block;
+                    margin:auto;"></span> 
+			</div>
+			<div class="col-md-8 col-xs-12 col-sm-12 login_form ">
+				<div class="container-fluid"> 
+                    <div class="row">
+                        <h2 >Accountant Login</h2><br>
+                        ----------------------------------------
+					</div>
+					<div class="row">
+                        <form #loginForm="ngForm"> 
+							<div class="row">
+                                <mat-form-field appearance="outline" style="width: 100%;">
+                                    <mat-label>Email id </mat-label>
+                                    <input required matInput type="text" name="email" [(ngModel)]="EmailID" #email="ngModel"
+                                    [ngClass]="{'is-invalid':email.touched && email.invalid}"
+                                    style="color: black">
+                                    <mat-icon matPrefix>perm_identity</mat-icon>
+                                </mat-form-field>
+							</div>
+                            <mat-form-field appearance="outline" style="width: 100%;">
+                                <mat-label>Password </mat-label>
+                                <input required matInput type="password" name="pass" [(ngModel)]="Password" #pass="ngModel"
+                                [ngClass]="{'is-invalid':pass.touched && pass.invalid}"
+                                style="color: black">
+                                <mat-icon matPrefix>lock</mat-icon>
+                            </mat-form-field>
+							 
+                            <div class="row">
+                                <button mat-raised-button (click)="login()" color="primary"  class="btn"
+                                [disabled]="loginForm.invalid">Login</button>
+                             </div>
+						</form>
+					</div>
+					 
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Footer -->
+	 
+</body>

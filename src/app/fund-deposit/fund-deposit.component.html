@@ -1,0 +1,53 @@
+<form #fundDepositForm="ngForm" (submit)="FundDeposits()">
+    <mat-toolbar color="warn">
+        Fund Deposit
+    </mat-toolbar>
+    <br> 
+    <div class="card">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <mat-form-field appearance="outline" style="width: 100%;">
+                        <mat-label>Account No.</mat-label>
+                        <input required matInput type="text" name="Accountno" [(ngModel)]="FundDeposit.AccountNo" #Accountno="ngModel"
+                            [ngClass]="{'is-invalid':Accountno.touched && Accountno.invalid}">
+                    </mat-form-field>
+                </div> 
+            </div> 
+            
+            <div class="row">
+                <div class="col-md-6">
+                    <label class="inline-radio">
+                        <mat-form-field appearance="outline" style="width: 100%;">
+                            <mat-label>Fund Deposit Date </mat-label>
+                            <input required matInput type="text" name="DepositDate" [(ngModel)]="FundDeposit.DepositDate" #DepositDate="ngModel"
+                                [ngClass]="{'is-invalid':DepositDate.touched && DepositDate.invalid}">
+                        </mat-form-field>
+                    </label>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <mat-form-field appearance="outline" style="width: 100%;">
+                        <mat-label>Amount To Deposit (in Rupees)</mat-label>
+                        <input required matInput name="DepositAmount" pattern="^[0-9]*$"
+                            [(ngModel)]="FundDeposit.DepositAmount" #DepositAmount="ngModel" [ngClass]="{'is-invalid':DepositAmount.touched && DepositAmount.invalid}">
+                    </mat-form-field>
+                </div>
+                 
+            </div>
+            <div>
+
+            </div>
+        </div>
+        <div class="card-footer">
+            <button mat-raised-button color="primary" [disabled]="fundDepositForm.invalid">
+                Submit
+            </button>
+        </div>
+    </div>
+</form>
+<ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="default" type="ball-spin-clockwise">
+    <p style="color: white">Please Wait ... </p>
+</ngx-spinner>

@@ -1,0 +1,44 @@
+<form #ChequeBookRequestForm="ngForm" (submit)="ChequeBookRequests()">
+    <mat-toolbar color="warn">
+        Cheque Book Request 
+    </mat-toolbar>
+    <br> 
+    <div class="card">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <mat-form-field appearance="outline" style="width: 100%;">
+                        <mat-label>Account No.</mat-label>                             
+                        <input required matInput type="text" name="AccountNumber" [(ngModel)]="chequeBk.AccountNumber" #AccountNumber="ngModel"
+                            [ngClass]="{'is-invalid':AccountNumber.touched && AccountNumber.invalid}">
+                    </mat-form-field>
+                </div> 
+            </div>  
+            
+            <div class="row">
+                <div class="col-md-6">
+                    <label class="inline-radio">
+                        <mat-form-field appearance="outline" style="width: 100%;">
+                            <mat-label>Request Date </mat-label>
+                            <input required matInput type="text" name="RequestDate" [(ngModel)]="chequeBk.RequestDate" #RequestDate="ngModel"
+                                [ngClass]="{'is-invalid':RequestDate.touched && RequestDate.invalid}">
+                        </mat-form-field>
+                    </label>
+                </div>
+            </div>
+
+             
+            <div>
+
+            </div>
+        </div>
+        <div class="card-footer">
+            <button mat-raised-button color="primary" [disabled]="ChequeBookRequestForm.invalid">
+                Submit
+            </button>
+        </div>
+    </div>
+</form>
+<ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="default" type="ball-spin-clockwise">
+    <p style="color: white">Please Wait ... </p>
+</ngx-spinner>

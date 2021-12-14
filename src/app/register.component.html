@@ -1,0 +1,119 @@
+<form #registerForm="ngForm" (submit)="register()">
+    <mat-toolbar color="warn">
+        <mat-icon matPrefix>supervisor_account</mat-icon>&nbsp;Register
+    </mat-toolbar>
+    <br>
+    <div class="image">
+        <img src="assets/images/bank.png" class="img img-thumbnail" height="150px" width="200px"
+        style="display:block;
+        margin:auto;">
+    </div>
+    <br>
+    <div class="card form_wrapper">
+        <div class="card-body form_container">
+            <div class="row">
+                <div class="col-md-6">
+                    <mat-form-field appearance="outline" style="width: 100%;">
+                        <mat-label>Full Name</mat-label>
+                        <input required matInput type="text" name="fname" [(ngModel)]="user.FullName" #fname="ngModel"
+                            [ngClass]="{'is-invalid':fname.touched && fname.invalid}">
+                    </mat-form-field>
+                </div>
+                <div class="col-md-6">
+                    <mat-form-field appearance="outline" style="width: 100%;">
+                        <mat-label>Nominee Name</mat-label>
+                        <input required matInput type="text" name="lname" [(ngModel)]="user.NomineeName" #lname="ngModel"
+                            [ngClass]="{'is-invalid':lname.touched && lname.invalid}">
+                    </mat-form-field>
+                </div>
+            </div>
+            <mat-form-field appearance="outline" style="width: 100%;">
+                <mat-label>Email id </mat-label>
+                <input pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}" required matInput type="text" name="email"
+                    [(ngModel)]="user.EmailID" #email="ngModel" [ngClass]="{'is-invalid':email.touched && email.invalid}">
+                <mat-icon matPrefix>perm_identity</mat-icon>
+            </mat-form-field>
+            <br>
+            <div class="row">
+                <div class="col-md-6">
+                    <mat-form-field appearance="outline" style="width: 100%;">
+                        <mat-label>Password </mat-label>
+                        <input (change)="validatePassword()" required matInput type="password" name="password"
+                            [(ngModel)]="user.Password" #txtPass="ngModel" [ngClass]="{'is-invalid':txtPass.touched && txtPass.invalid}">
+                        <mat-icon matPrefix>lock</mat-icon>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-6">
+                    <mat-form-field appearance="outline" style="width: 100%;">
+                        <mat-label>Confirm Password </mat-label>
+                        <input (change)="validatePassword()" required matInput type="password" name="confPass"
+                            [(ngModel)]="confPassword" #confPass="ngModel" [ngClass]="{'is-invalid':confPass.touched && confPass.invalid}">
+                        <mat-icon matPrefix>lock</mat-icon>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div>
+                <label class="inline-radio">
+                    <input checked required type="radio" name="gen" value="Male" [(ngModel)]="user.Gender" #gen="ngModel">
+                    Male &nbsp;&nbsp;
+                </label>
+                <label class="inline-radio">
+                    <input required type="radio" name="gen" value="Female" [(ngModel)]="user.Gender" #gen="ngModel">
+                    Female
+                </label>
+                <div class="invalid-feeback">
+                    <p *ngIf="user.Gender==''">Gender is required</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <mat-form-field appearance="outline" style="width: 100%;">
+                        <mat-label>Current Balance </mat-label>
+                        <input required matInput type="text" name="Currentbalance" [(ngModel)]="user.Currentbalance"
+                            #Currentbalance="ngModel" [ngClass]="{'is-invalid':Currentbalance.touched && Currentbalance.invalid}">
+                        <mat-icon matPrefix>lock</mat-icon>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-6">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Account Type</mat-label>
+                        <mat-select required [(ngModel)]="user.AccountType" name="type">
+                          <mat-option value="Saving">Saving</mat-option>
+                          <mat-option value="Current">Current</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-md-6">
+                    <label class="inline-radio">
+                        <mat-form-field appearance="outline" style="width: 100%;">
+                            <mat-label>Date Of Birth</mat-label>
+                            <input required matInput type="text" name="DOB" [(ngModel)]="user.DOB" #DOB="ngModel"
+                                [ngClass]="{'is-invalid':DOB.touched && DOB.invalid}">
+                        </mat-form-field>
+                    </label>
+                </div>
+            </div>
+            <div>
+
+            </div>
+            <div>
+                <mat-form-field appearance="outline" style="width: 100%;">
+                    <mat-label>Address</mat-label>
+                    <input required matInput type="text" name="addr" [(ngModel)]="user.Address" #addr="ngModel"
+                        [ngClass]="{'is-invalid':addr.touched && addr.invalid}">
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="card-footer">
+            <button mat-raised-button color="primary" [disabled]="registerForm.invalid">
+                Register
+            </button>
+        </div>
+    </div>
+</form>
+<ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="default" type="ball-spin-clockwise">
+    <p style="color: white">Please Wait ... </p>
+</ngx-spinner>

@@ -1,0 +1,58 @@
+<form #fundTransferForm="ngForm" (submit)="FundTransfers()">
+    <mat-toolbar color="warn">
+        Fund Transfer
+    </mat-toolbar> 
+    <br>
+    <div class="card">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <mat-form-field appearance="outline" style="width: 100%;">
+                        <mat-label>From Account No</mat-label>
+                        <input required matInput type="text" name="AccountNo" [(ngModel)]="FundTransfer.TransFromAccountNumber"
+                            #AccountNo="ngModel" [ngClass]="{'is-invalid':AccountNo.touched && AccountNo.invalid}">
+                    </mat-form-field>
+                </div>
+            </div>
+
+            <div class="row">
+            <div class="col-md-6">
+                <mat-form-field appearance="outline" style="width: 100%;">
+                    <mat-label>To Account No.</mat-label>
+                    <input required matInput type="text" name="AccountNo"   [(ngModel)]="FundTransfer.TransToAccountNumber"
+                        #AccountNo="ngModel" [ngClass]="{'is-invalid':AccountNo.touched && AccountNo.invalid}">
+                </mat-form-field>
+            </div>
+        </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <mat-form-field appearance="outline" style="width: 100%;">
+                        <mat-label>Transfer Date </mat-label>
+                        <input required matInput type="text" name="WithdrwalDate" datetime="yyyy-MM-dd" 
+                            [(ngModel)]="FundTransfer.TransDate" #WithdrwalDate="ngModel"
+                            [ngClass]="{'is-invalid':WithdrwalDate.touched && WithdrwalDate.invalid}">
+                    </mat-form-field>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <mat-form-field appearance="outline" style="width: 100%;">
+                        <mat-label>Amount To Transfer . (in Rupees) </mat-label>
+                        <input required matInput type="texy" name="WithdrwalAmount"  pattern="^[0-9]*$"
+                            [(ngModel)]="FundTransfer.TransAmount" #WithdrwalAmount="ngModel"  
+                            [ngClass]="{'is-invalid':WithdrwalAmount.touched && WithdrwalAmount.invalid}">
+                        <mat-icon matPrefix>lock</mat-icon>
+                    </mat-form-field>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer">
+            <button mat-raised-button color="primary" [disabled]="fundTransferForm.invalid">
+                Submit
+            </button>
+        </div>
+    </div>
+</form>
+ 

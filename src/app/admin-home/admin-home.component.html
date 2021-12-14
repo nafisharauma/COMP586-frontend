@@ -1,0 +1,65 @@
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">Banking System</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown"
+      aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav" style="margin-left: auto;">
+          <li class="nav-item active">
+              <a class="nav-link" routerLink="home">Home <span class="sr-only">(current)</span></a>
+          </li>
+          
+          <li class="nav-item">
+              <a class="nav-link" (click)="logout()">Logout</a>
+          </li> 
+      </ul>
+  </div>
+</nav>
+ 
+<div class="container" *ngIf="accountDetails?.length > 0">
+  <h3>Account Information</h3>
+    <table class="table table-striped">
+      <thead>
+          <tr>
+            <th>Account Name</th>
+            <th>Account Number</th>
+            <th>Account Balance</th>
+            <th>OpeningDate</th>
+            <th>Gender</th>
+          </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let ac of accountDetails">
+          <td>{{ ac.FullName}}</td>
+          <td>{{ ac.AccountNumber }}</td>
+          <td>{{ ac.Currentbalance }}</td>
+          <td>{{ ac.OpeningDate }}</td>
+          <td>{{ ac.Gender }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="container" *ngIf="chqdetails?.length > 0">
+    <h3>ChequeBook Request</h3>
+    <table class="table table-striped">
+      <thead>
+          <tr>
+            <th>Account Name</th>
+            <th>Account Number</th> 
+            <th>RequestDate</th>
+            <th>Request Status</th> 
+          </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let cq of chqdetails">
+          <td>{{ cq.FullName}}</td>
+          <td>{{ cq.AccountNumber }}</td>
+          <td>{{ cq.RequestDate }}</td> 
+          <td>{{ cq.RequestStatus }}</td> 
+        </tr>
+      </tbody>
+    </table>
+  </div>
